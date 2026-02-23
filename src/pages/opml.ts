@@ -26,6 +26,7 @@ export const GET: APIRoute = async () => {
     return new Response(opml, {
       headers: {
         "Content-Type": "text/xml; charset=utf-8",
+        "Content-Disposition": "attachment; filename=\"subscriptions.opml\"",
         "Cache-Control": "public, max-age=3600",
       },
     });
