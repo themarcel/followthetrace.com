@@ -30,7 +30,6 @@ const allTags = [
     <section class="posts-list" aria-label="Blog posts">
       {
         sortedPosts
-          .filter((post: Post) => !post.data.draft)
           .map((post: Post) => {
             const href = "/blog/" + post.id;
             const date = new Date(post.data.date);
@@ -40,7 +39,11 @@ const allTags = [
             const dateIso = post.data.date.toISOString();
 
             return (
-              <article class="flex flex-col mb-6 sm:mb-12 post-item" data-tags={post.data.tags.join(',')}>
+              <article
+                class="flex flex-col mb-6 sm:mb-12 post-item"
+                data-tags={post.data.tags.join(',')}
+                data-draft={post.data.draft ? "true" : "false"}
+              >
                 <h2 class="post-title">
                   <a
                     href={href}
@@ -410,6 +413,7 @@ const allTags = [
   const tagFilter = document.getElementById('tag-filter');
   const tagButtons = document.querySelectorAll('.tag-btn');
   const postItems = document.querySelectorAll('.post-item');
+  const showDrafts = new URLSearchParams(window.location.search).get('drafts') === 'true';
 
   filterToggle?.addEventListener('click', () => {
     const isHidden = tagFilter?.classList.contains('tag-filter-hidden');
@@ -426,8 +430,10 @@ const allTags = [
 
     postItems.forEach(post => {
       const postTags = post.getAttribute('data-tags')?.split(',') || [];
+      const isDraft = post.getAttribute('data-draft') === 'true';
+      const matchesDraft = showDrafts || !isDraft;
 
-      if (activeTags.length === 0 || activeTags.some(tag => postTags.includes(tag))) {
+      if ((activeTags.length === 0 || activeTags.some(tag => postTags.includes(tag))) && matchesDraft) {
         post.classList.remove('hidden');
       } else {
         post.classList.add('hidden');
@@ -474,9 +480,9 @@ const allTags = [
           btn.classList.add('active');
         }
       });
-
-      filterPosts();
     }
+
+    filterPosts();
   };
 
   initializeFiltersFromURL();
