@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   author: {
     name: "Marcel Arie",
     username: "marcelarie",
-    email: "googlillo@example.com",
+    email: "me@marcel.cool",
     birthDate: new Date("1995-09-27"),
     programmingStartDate: new Date("2020-10-10"),
   },
