@@ -5,14 +5,14 @@ export const SITE_CONFIG = {
 
   author: {
     name: "Marcel Arie",
-    username: "marcelarie",
+    username: "themarcel",
     email: "me@marcel.cool",
     birthDate: new Date("1995-09-27"),
     programmingStartDate: new Date("2020-10-10"),
   },
 
   github: {
-    username: "marcelarie",
+    username: "themarcel",
     repo: "followthetrace.com",
     repoId: "MDEwOlJlcG9zaXRvcnkyODU1OTY4MzE",
   },
@@ -29,6 +29,6 @@ export const SITE_CONFIG = {
     "sourses",
     "rund",
     "git-tellme",
-    "marcelarie.com",
+    "followthetrace.com",
   ],
 } as const;
