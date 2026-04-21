@@ -17,6 +17,10 @@ export const SITE_CONFIG = {
     repoId: "MDEwOlJlcG9zaXRvcnkyODU1OTY4MzE",
   },
 
+  codeberg: {
+    username: "themarcel",
+  },
+
   giscus: {
     category: "General",
     categoryId: "DIC_kwDOEQXcn84CvJvn",
