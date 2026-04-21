@@ -1,18 +1,8 @@
 ---
 import { SITE_CONFIG } from "../config";
-
-const isHome = Astro.url.pathname === "/";
-const justifyStyle = isHome ? "justify-end" : "justify-between";
 ---
 
-<footer class=`flex ${justifyStyle} items-center py-4 mt-8`>
-	{
-		!isHome && (
-			<a href="/" class="text-xl md:text-2xl">
-				Home
-			</a>
-		)
-	}
+<footer class=`flex justify-between items-center py-4 mt-8`>
 	<div class="footer-links-wrapper">
 		<div class="flex space-x-4 footer-links">
 			<a
