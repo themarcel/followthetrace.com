@@ -13,69 +13,110 @@ const justifyStyle = isHome ? "justify-end" : "justify-between";
 			</a>
 		)
 	}
-	<div class="flex space-x-4">
-		<a
-			href="/rss.xml"
-			class="text-sm"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			RSS
-		</a>
-		<span>/</span>
-		<a
-			href="/opml"
-			class="text-sm"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			OPML
-		</a>
-		<span>/</span>
-		<a
-			href={`mailto:${SITE_CONFIG.author.email}`}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="text-sm"
-		>
-			Mail
-		</a>
-		<span>/</span>
-		<a
-			href={`https://github.com/${SITE_CONFIG.github.username}`}
-			class="text-sm"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			GitHub
-		</a>
-		<span>/</span>
-		<a
-			href={`https://codeberg.org/${SITE_CONFIG.codeberg.username}`}
-			class="text-sm"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			Codeberg
-		</a>
-
-		<style>
-			footer a {
-				font-family: var(--font-atkinson);
-				font-size: clamp(16px, 3vw, 14px);
-				padding: 0 0.15rem;
-				margin: 0 -0.15rem;
-			}
-
-			:global(html:not(.dark)) footer a:hover {
-				background-color: #0000ee;
-				color: #ffff11;
-			}
-
-			:global(html.dark) footer a:hover {
-				background-color: var(--color-logo-dark);
-				color: #111827;
-			}
-		</style>
+	<div class="footer-links-wrapper">
+		<div class="flex space-x-4 footer-links">
+			<a
+				href="/rss.xml"
+				class="text-sm"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				RSS
+			</a>
+			<span>/</span>
+			<a
+				href="/opml"
+				class="text-sm"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				OPML
+			</a>
+			<span>/</span>
+			<a
+				href={`mailto:${SITE_CONFIG.author.email}`}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-sm"
+			>
+				Mail
+			</a>
+			<span>/</span>
+			<a
+				href={`https://github.com/${SITE_CONFIG.github.username}`}
+				class="text-sm"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				GitHub
+			</a>
+			<span>/</span>
+			<a
+				href={`https://codeberg.org/${SITE_CONFIG.codeberg.username}`}
+				class="text-sm"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Codeberg
+			</a>
+		</div>
 	</div>
 </footer>
+
+<style>
+	footer a {
+		font-family: var(--font-atkinson);
+		font-size: clamp(16px, 3vw, 14px);
+		padding: 0 0.15rem;
+		margin: 0 -0.15rem;
+	}
+
+	:global(html:not(.dark)) footer a:hover {
+		background-color: #0000ee;
+		color: #ffff11;
+	}
+
+	:global(html.dark) footer a:hover {
+		background-color: var(--color-logo-dark);
+		color: #111827;
+	}
+
+	.footer-links-wrapper {
+		position: relative;
+	}
+
+	@media (max-width: 640px) {
+		.footer-links-wrapper {
+			overflow: hidden;
+			max-width: 100%;
+		}
+
+		.footer-links-wrapper::after {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 2.5rem;
+			background: linear-gradient(to right, transparent, var(--color-bg));
+			pointer-events: none;
+		}
+
+		.footer-links {
+			overflow-x: auto;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+			padding-bottom: 2px;
+			padding-right: 2rem;
+		}
+
+		.footer-links::-webkit-scrollbar {
+			display: none;
+		}
+
+		footer a {
+			font-size: 13px;
+			white-space: nowrap;
+		}
+	}
+</style>
