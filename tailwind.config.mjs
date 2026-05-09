@@ -6,7 +6,7 @@ export default {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            fontFamily: theme("fontFamily.mono"),
+            fontFamily: '"Inter", system-ui, sans-serif',
             h1: { fontWeight: "500", fontSize: "2rem" },
             h2: { fontWeight: "400", fontSize: "1.75rem" },
             h3: { fontWeight: "400", fontSize: "1.5rem" },

@@ -116,8 +116,7 @@ const { title } = Astro.props;
 		<link rel="dns-prefetch" href="https://api.github.com" />
 		<link rel="preconnect" href="https://github.com" />
 		
-		<link rel="preload" href="/fonts/vt323-regular.ttf" as="font" type="font/ttf" crossorigin />
-		<link rel="preload" href="/fonts/atkinson-hyperlegible-regular.ttf" as="font" type="font/ttf" crossorigin />
+		<link rel="preload" href="/fonts/inter-variable.ttf" as="font" type="font/ttf" crossorigin />
 		
 		<title>{title}</title>
 	</head>
@@ -136,52 +135,38 @@ const { title } = Astro.props;
 		:root {
 			/* Fonts */
 			--font-mono: "IBM Plex Mono", monospace;
-			--font-merriweather: "Merriweather", serif;
-			--font-atkinson: "Atkinson Hyperlegible", sans-serif;
-			--font-vt323: "VT323", monospace;
-			
+			--font-inter: "Inter", system-ui, sans-serif;
+
 			/* Colors - Light mode */
-			--color-bg-light: #fafafa;
-			--color-bg: #fafafa;
-			--color-bg-dark: #1a1a1a;
-			/* --color-bg-dark: #133e4a;  <-- alternative dark bg color */ 
-			--color-text: #000000;
-			--color-text-muted: #6b6b6b;
-			--color-link: #0000ee;
-			--color-link-hover: #ff0000;
-			--color-link-visited: #551a8b;
-			--color-logo-dark: #aae574;
-			--color-logo-dark-hover: #d7f48c;
-			--color-highlight-dark: var(--color-logo-dark);
-			--color-border: #0000ee;
-			
-			/* Accents */
-			--accent: 136, 58, 234;
-			--accent-light: 224, 204, 250;
-			--accent-dark: 49, 10, 101;
-			--accent-gradient: linear-gradient(
-				45deg,
-				rgb(var(--accent)),
-				rgb(var(--accent-light)) 30%,
-				white 60%
-			);
+			--color-bg-light: #ffffff;
+			--color-bg: #ffffff;
+			--color-bg-dark: #212529;
+			--color-text: #212529;
+			--color-text-muted: #6c757d;
+			--color-link: #0d6efd;
+			--color-link-hover: #0a58ca;
+			--color-link-visited: #0d6efd;
+			--color-logo-dark: #6ea8fe;
+			--color-logo-dark-hover: #9ec5fe;
+			--color-highlight-dark: #6ea8fe;
+			--color-border: #dee2e6;
 		}
 		
 	html.dark {
 		--color-bg: var(--color-bg-dark);
-		--color-text: #e5e5e5;
-		--color-text-muted: #d1d5db;
-		--color-link-visited-dark: #a855f7;
-		--color-text-dark: #e5e5e5;
+		--color-text: #dee2e6;
+		--color-text-muted: #adb5bd;
+		--color-link-visited-dark: #6ea8fe;
+		--color-text-dark: #dee2e6;
 		--color-text-h2: #ffffff;
-		--color-text-h3: #e5e5e5;
-		--color-text-h4: #d4d4d4;
-		--color-text-h5: #cccccc;
-		--color-text-h6: #b3b3b3;
+		--color-text-h3: #dee2e6;
+		--color-text-h4: #ced4da;
+		--color-text-h5: #adb5bd;
+		--color-text-h6: #868e96;
 	}
 		
 		html {
-			font-family: system-ui, sans-serif;
+			font-family: var(--font-inter);
 			background: var(--color-bg);
 		}
 		
@@ -190,7 +175,7 @@ const { title } = Astro.props;
 		}
 
 		html.dark :not(pre) > code {
-			background-color: rgba(170, 229, 116, 0.15);
+			background-color: rgba(110, 168, 254, 0.12);
 			color: var(--color-highlight-dark);
 			border: 1px solid var(--color-highlight-dark);
 			border-radius: 0.1rem;
@@ -241,7 +226,7 @@ const { title } = Astro.props;
 
 		html:not(.dark) nav #logo:hover,
 		html:not(.dark) nav #logo:focus-visible {
-			color: #ffff11;
+			color: #ffffff;
 			outline: none;
 		}
 
@@ -252,7 +237,7 @@ const { title } = Astro.props;
 
 		html.dark nav #logo:hover,
 		html.dark nav #logo:focus-visible {
-			color: #a855f7;
+			color: var(--color-logo-dark-hover);
 			outline: none;
 		}
 
@@ -270,7 +255,7 @@ const { title } = Astro.props;
 		}
 
 	html.dark a:hover {
-		color: #e5e5e5;
+		color: #dee2e6;
 	}
 
 	html.dark a:visited {
@@ -293,7 +278,7 @@ const { title } = Astro.props;
 		}
 
 		article.prose :where(h2, h3, h4, h5, h6) {
-			font-family: var(--font-merriweather) !important;
+			font-family: var(--font-inter) !important;
 			margin-top: 1rem !important;
 			margin-bottom: 0.5rem !important;
 			line-height: 1.3;
@@ -448,7 +433,7 @@ const { title } = Astro.props;
 			padding: 0.05rem 0.5rem;
 			cursor: pointer;
 			font-size: 12px;
-			font-family: var(--font-atkinson);
+			font-family: var(--font-inter);
 			text-transform: lowercase;
 			background: #ffffff;
 			border: 2px solid #c0c0c0;
@@ -464,14 +449,14 @@ const { title } = Astro.props;
 		html:not(.dark) .copy-code:hover,
 		html:not(.dark) .copy-code:focus-visible {
 			border-color: #808080;
-			color: #1a1a1a;
+			color: #212529;
 			outline: none;
 		}
 
 		html.dark .copy-code:hover,
 		html.dark .copy-code:focus-visible {
 			border-color: #a0a0a0;
-			color: #e5e5e5;
+			color: #dee2e6;
 		}
 
 		html:not(.dark) .copy-code.copied {

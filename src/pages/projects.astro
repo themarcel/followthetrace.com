@@ -82,14 +82,14 @@ const projects: Project[] = await fetchProjects();
 
 <style>
   .page-title {
-    font-family: var(--font-merriweather);
+    font-family: var(--font-inter);
     font-size: 32px;
     margin-bottom: 1rem;
     line-height: 1.2;
   }
 
   .project-title a {
-    font-family: var(--font-atkinson);
+    font-family: var(--font-inter);
     font-size: 22px;
     text-decoration: none;
     line-height: 1.3;
@@ -119,7 +119,7 @@ const projects: Project[] = await fetchProjects();
   }
 
   .project-description {
-    font-family: var(--font-atkinson);
+    font-family: var(--font-inter);
     font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
     line-height: 1.6;
     text-align: justify;
@@ -144,7 +144,7 @@ const projects: Project[] = await fetchProjects();
 
   :global(html.dark) .project-description a:hover,
   :global(html.dark) .project-description a:focus-visible {
-    color: #a855f7;
+    color: #6ea8fe;
   }
 
   @media (max-width: 600px) {
