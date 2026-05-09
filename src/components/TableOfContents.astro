@@ -1,4 +1,7 @@
 <aside id="toc" aria-label="Table of contents"></aside>
+<details id="toc-mobile">
+	<summary>contents</summary>
+</details>
 
 <style>
 	#toc {
@@ -51,10 +54,52 @@
 		margin-bottom: 0.4rem;
 		display: block;
 	}
+
+	#toc-mobile {
+		font-family: var(--font-mono);
+		font-size: 12px;
+		line-height: 1.5;
+		margin-bottom: 1.5rem;
+		border: 1px solid var(--color-border);
+		padding: 0.4rem 0.75rem;
+	}
+
+	#toc-mobile summary {
+		cursor: pointer;
+		color: var(--color-text-muted);
+		font-size: 11px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		user-select: none;
+		padding: 0.1rem 0;
+	}
+
+	#toc-mobile :global(a) {
+		display: block;
+		color: var(--color-text-muted);
+		text-decoration: none;
+		padding: 0.1rem 0;
+		transition: color 0.15s;
+	}
+
+	#toc-mobile :global(a:hover) {
+		color: var(--color-text);
+	}
+
+	#toc-mobile :global(.toc-h3) {
+		padding-left: 0.75rem;
+	}
+
+	@media (min-width: 1200px) {
+		#toc-mobile {
+			display: none;
+		}
+	}
 </style>
 
 <script>
 	const toc = document.getElementById('toc');
+	const mobileToc = document.getElementById('toc-mobile');
 	const content = document.getElementById('post-content');
 
 	const alignToc = () => {
@@ -82,7 +127,16 @@
 				a.textContent = heading.textContent || '';
 				a.className = heading.tagName === 'H3' ? 'toc-h3' : '';
 				toc.appendChild(a);
+
+				if (mobileToc) {
+					const ma = a.cloneNode(true) as HTMLAnchorElement;
+					mobileToc.appendChild(ma);
+				}
 			});
+
+			if (mobileToc) {
+				content.parentNode?.insertBefore(mobileToc, content);
+			}
 
 			const links = Array.from(toc.querySelectorAll('a'));
 
