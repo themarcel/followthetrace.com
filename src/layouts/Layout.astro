@@ -117,6 +117,7 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://github.com" />
 		
 		<link rel="preload" href="/fonts/inter-variable.ttf" as="font" type="font/ttf" crossorigin />
+		<link rel="preload" href="/fonts/vt323-regular.ttf" as="font" type="font/ttf" crossorigin />
 		
 		<title>{title}</title>
 	</head>
@@ -136,6 +137,7 @@ const { title } = Astro.props;
 			/* Fonts */
 			--font-mono: "IBM Plex Mono", monospace;
 			--font-inter: "Inter", system-ui, sans-serif;
+			--font-vt323: "VT323", monospace;
 
 			/* Colors - Light mode */
 			--color-bg-light: #ffffff;
@@ -146,8 +148,8 @@ const { title } = Astro.props;
 			--color-link: #0d6efd;
 			--color-link-hover: #0a58ca;
 			--color-link-visited: #0d6efd;
-			--color-logo-dark: #6ea8fe;
-			--color-logo-dark-hover: #9ec5fe;
+			--color-logo-dark: #aae574;
+			--color-logo-dark-hover: #d7f48c;
 			--color-highlight-dark: #6ea8fe;
 			--color-border: #dee2e6;
 		}
@@ -227,7 +229,7 @@ const { title } = Astro.props;
 
 		html:not(.dark) nav #logo:hover,
 		html:not(.dark) nav #logo:focus-visible {
-			color: #ffffff;
+			color: #ffff11;
 			outline: none;
 		}
 
@@ -238,7 +240,7 @@ const { title } = Astro.props;
 
 		html.dark nav #logo:hover,
 		html.dark nav #logo:focus-visible {
-			color: var(--color-logo-dark-hover);
+			color: #a855f7;
 			outline: none;
 		}
 

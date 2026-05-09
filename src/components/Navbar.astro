@@ -60,11 +60,11 @@ const logoText = hostname.includes("marcelmanzanares.com")
 
 		<style>
 			nav #logo {
-				font-family: "IBM Plex Mono", monospace;
-				font-size: clamp(1.25rem, 3vw, 1.75rem);
-				font-weight: 700;
-				letter-spacing: -0.02em;
-				line-height: 1.2;
+				font-family: var(--font-vt323);
+				font-size: clamp(2rem, 4vw, 2.5rem);
+				font-weight: normal;
+				letter-spacing: 0;
+				line-height: 1;
 				display: inline-block;
 				padding-left: 0.25rem;
 				padding-right: 0.25rem;
@@ -74,8 +74,8 @@ const logoText = hostname.includes("marcelmanzanares.com")
 
 				:global(html:not(.dark)) nav #logo:hover,
 				:global(html:not(.dark)) nav #logo:focus-visible {
-					background-color: #0d6efd !important;
-					color: #ffffff !important;
+					background-color: #0000ee !important;
+					color: #ffff11 !important;
 				}
 
 			nav #right-navbar a {
