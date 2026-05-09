@@ -152,19 +152,24 @@ const { title } = Astro.props;
 			--color-logo-dark-hover: #d7f48c;
 			--color-highlight-dark: #6ea8fe;
 			--color-border: #dee2e6;
+			--color-text-h2: #3d8bfd;
+			--color-text-h3: #6ea8fe;
+			--color-text-h4: #9ec5fe;
+			--color-text-h5: #9ec5fe;
+			--color-text-h6: #9ec5fe;
 		}
-		
+
 	html.dark {
 		--color-bg: var(--color-bg-dark);
 		--color-text: #dee2e6;
 		--color-text-muted: #adb5bd;
 		--color-link-visited-dark: #6ea8fe;
 		--color-text-dark: #dee2e6;
-		--color-text-h2: #ffffff;
-		--color-text-h3: #dee2e6;
-		--color-text-h4: #ced4da;
-		--color-text-h5: #adb5bd;
-		--color-text-h6: #868e96;
+		--color-text-h2: #b8ea88;
+		--color-text-h3: #c6ef9c;
+		--color-text-h4: #d4f4b0;
+		--color-text-h5: #d4f4b0;
+		--color-text-h6: #d4f4b0;
 		--color-border: #495057;
 	}
 		
@@ -204,6 +209,11 @@ const { title } = Astro.props;
 
 		.prose :where(blockquote) {
 			color: var(--color-text);
+			border-left-color: var(--color-link) !important;
+		}
+
+		html.dark .prose :where(blockquote) {
+			border-left-color: var(--color-logo-dark) !important;
 		}
 
 		.dark .astro-code {

@@ -166,8 +166,7 @@ const formattedDate = formatDate(date);
 		max-width: 65ch;
 		overflow-wrap: break-word;
 		line-height: 1.6;
-		text-align: justify;
-		hyphens: auto;
+		text-align: left;
 		text-wrap: pretty;
 		color: var(--color-text);
 	}
@@ -215,12 +214,6 @@ const formattedDate = formatDate(date);
 	:global(.prose pre) {
 	  position: relative;
 	  padding-top: 2rem;
-	}
-
-	@media (max-width: 600px) {
-		.prose {
-			text-align: left;
-		}
 	}
 
 	:global(.copy-code) {
