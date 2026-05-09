@@ -56,12 +56,15 @@
 	}
 
 	#toc-mobile {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		background: var(--color-bg);
 		font-family: var(--font-mono);
 		font-size: 12px;
 		line-height: 1.5;
-		margin-bottom: 1.5rem;
-		border: 1px solid var(--color-border);
-		padding: 0.4rem 0.75rem;
+		border-bottom: 1px solid var(--color-border);
+		padding: 0.4rem 1rem;
 	}
 
 	#toc-mobile summary {
@@ -90,6 +93,25 @@
 		padding-left: 0.75rem;
 	}
 
+	.toc-mobile-content {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.2s ease;
+	}
+
+	#toc-mobile[open] .toc-mobile-content {
+		max-height: calc(50vh - 3rem);
+		overflow-y: auto;
+		padding-top: 0.3rem;
+		padding-bottom: 0.5rem;
+	}
+
+	@media (max-width: 1199px) {
+		:global(html) {
+			scroll-padding-top: 3rem;
+		}
+	}
+
 	@media (min-width: 1200px) {
 		#toc-mobile {
 			display: none;
@@ -99,7 +121,7 @@
 
 <script>
 	const toc = document.getElementById('toc');
-	const mobileToc = document.getElementById('toc-mobile');
+	const mobileToc = document.getElementById('toc-mobile') as HTMLDetailsElement | null;
 	const content = document.getElementById('post-content');
 
 	const alignToc = () => {
@@ -121,6 +143,16 @@
 			label.textContent = 'contents';
 			toc.appendChild(label);
 
+			let mobileInner: HTMLElement | null = null;
+			if (mobileToc) {
+				const wrapper = document.createElement('div');
+				wrapper.className = 'toc-mobile-content';
+				const inner = document.createElement('div');
+				wrapper.appendChild(inner);
+				mobileToc.appendChild(wrapper);
+				mobileInner = inner;
+			}
+
 			headings.forEach(heading => {
 				const a = document.createElement('a');
 				a.href = '#' + heading.id;
@@ -128,15 +160,12 @@
 				a.className = heading.tagName === 'H3' ? 'toc-h3' : '';
 				toc.appendChild(a);
 
-				if (mobileToc) {
+				if (mobileInner) {
 					const ma = a.cloneNode(true) as HTMLAnchorElement;
-					mobileToc.appendChild(ma);
+					ma.addEventListener('click', () => { if (mobileToc) mobileToc.open = false; });
+					mobileInner.appendChild(ma);
 				}
 			});
-
-			if (mobileToc) {
-				content.parentNode?.insertBefore(mobileToc, content);
-			}
 
 			const links = Array.from(toc.querySelectorAll('a'));
 
@@ -152,6 +181,8 @@
 			}, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
 
 			headings.forEach(h => observer.observe(h));
+		} else if (mobileToc) {
+			mobileToc.hidden = true;
 		}
 	}
 </script>
