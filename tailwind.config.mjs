@@ -7,12 +7,12 @@ export default {
         DEFAULT: {
           css: {
             fontFamily: '"Inter", system-ui, sans-serif',
-            h1: { fontWeight: "500", fontSize: "2rem" },
-            h2: { fontWeight: "400", fontSize: "1.75rem" },
-            h3: { fontWeight: "400", fontSize: "1.5rem" },
-            h4: { fontWeight: "300", fontSize: "1.25rem" },
-            h5: { fontWeight: "300", fontSize: "1.125rem" },
-            h6: { fontWeight: "300", fontSize: "1rem" },
+            h1: { fontWeight: "500", fontSize: "calc(1.345rem + 1.14vw)", lineHeight: "1.2" },
+            h2: { fontWeight: "400", fontSize: "calc(1.305rem + .66vw)", lineHeight: "1.2" },
+            h3: { fontWeight: "400", fontSize: "calc(1.285rem + .42vw)", lineHeight: "1.2" },
+            h4: { fontWeight: "300", fontSize: "calc(1.265rem + .18vw)", lineHeight: "1.2" },
+            h5: { fontWeight: "300", fontSize: "1.2rem", lineHeight: "1.2" },
+            h6: { fontWeight: "300", fontSize: "1rem", lineHeight: "1.2" },
             a: { "&:hover": { color: "#3182ce" } },
             article: { backgroundColor: "#f7f7f7" },
             code: {
