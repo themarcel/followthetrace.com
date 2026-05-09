@@ -134,7 +134,7 @@ const formattedDate = formatDate(date);
 <style>
 	.post-title {
 		font-family: var(--font-inter);
-		font-size: 32px;
+		font-size: 24px;
 		font-weight: 500;
 		margin-bottom: 4px;
 		line-height: 1.2;
@@ -154,15 +154,15 @@ const formattedDate = formatDate(date);
 	
 	.post-date,
 	.post-reading-time {
-		font-family: var(--font-inter);
+		font-family: var(--font-mono);
 		font-size: 14px;
 		font-weight: 400;
 		color: var(--color-text-muted);
 	}
 	
 	.prose {
-		font-family: var(--font-inter);
-		font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+		font-family: var(--font-mono);
+		font-size: clamp(0.875rem, 0.8rem + 0.5vw, 1rem);
 		max-width: 65ch;
 		overflow-wrap: break-word;
 		line-height: 1.6;
@@ -178,20 +178,21 @@ const formattedDate = formatDate(date);
 		margin-bottom: 0.5rem;
 		line-height: 1.3;
 		font-weight: 400 !important;
+		text-align: left !important;
 	}
 
 	:global(article.prose) h2 {
-		font-size: 28px !important;
+		font-size: 20px !important;
 		font-weight: 500 !important;
 	}
 
 	:global(article.prose) h3 {
-		font-size: 24px !important;
+		font-size: 18px !important;
 		font-weight: 400 !important;
 	}
 
 	:global(article.prose) h4 {
-		font-size: 20px !important;
+		font-size: 16px !important;
 		font-weight: 300 !important;
 	}
 
@@ -230,7 +231,7 @@ const formattedDate = formatDate(date);
 	}
 
 	.post-tag {
-		font-family: var(--font-inter);
+		font-family: var(--font-mono);
 		font-size: 12px;
 		padding: 0.05rem 0.5rem;
 		border: 1px solid #c0c0c0;

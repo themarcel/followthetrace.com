@@ -6,7 +6,7 @@ export default {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            fontFamily: '"Inter", system-ui, sans-serif',
+            fontFamily: '"IBM Plex Mono", monospace',
             h1: { fontWeight: "500", fontSize: "calc(1.345rem + 1.14vw)", lineHeight: "1.2" },
             h2: { fontWeight: "400", fontSize: "calc(1.305rem + .66vw)", lineHeight: "1.2" },
             h3: { fontWeight: "400", fontSize: "calc(1.285rem + .42vw)", lineHeight: "1.2" },
