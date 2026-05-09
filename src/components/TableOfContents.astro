@@ -133,6 +133,9 @@
 	};
 
 	alignToc();
+	requestAnimationFrame(() => requestAnimationFrame(() => {
+		if (toc) toc.style.transition = 'top 0.15s ease, max-height 0.15s ease';
+	}));
 	window.addEventListener('resize', alignToc);
 	window.addEventListener('scroll', alignToc, { passive: true });
 
