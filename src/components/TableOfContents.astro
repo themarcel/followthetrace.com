@@ -93,13 +93,13 @@
 		padding-left: 0.75rem;
 	}
 
-	.toc-mobile-content {
+	:global(.toc-mobile-content) {
 		max-height: 0;
 		overflow: hidden;
 		transition: max-height 0.2s ease;
 	}
 
-	#toc-mobile[open] .toc-mobile-content {
+	#toc-mobile[open] :global(.toc-mobile-content) {
 		max-height: calc(50vh - 3rem);
 		overflow-y: auto;
 		padding-top: 0.3rem;
@@ -126,13 +126,15 @@
 
 	const alignToc = () => {
 		if (toc && content) {
-			toc.style.top = content.getBoundingClientRect().top + 'px';
-			toc.style.maxHeight = `calc(100vh - ${content.getBoundingClientRect().top}px - 1rem)`;
+			const top = Math.max(16, content.getBoundingClientRect().top);
+			toc.style.top = top + 'px';
+			toc.style.maxHeight = `calc(100vh - ${top}px - 1rem)`;
 		}
 	};
 
 	alignToc();
 	window.addEventListener('resize', alignToc);
+	window.addEventListener('scroll', alignToc, { passive: true });
 
 	if (toc && content) {
 		const headings = Array.from(content.querySelectorAll('h2, h3'));
