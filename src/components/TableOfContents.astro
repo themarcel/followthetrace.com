@@ -1,0 +1,106 @@
+<aside id="toc" aria-label="Table of contents"></aside>
+
+<style>
+	#toc {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: calc(50% + 24rem + 1.5rem);
+		width: 10rem;
+		max-height: calc(100vh - 5rem);
+		overflow-y: auto;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		line-height: 1.5;
+		z-index: 10;
+		padding-left: 0.75rem;
+		border-left: 1px solid var(--color-border);
+	}
+
+	@media (min-width: 1200px) {
+		#toc {
+			display: block;
+		}
+	}
+
+	#toc :global(a) {
+		display: block;
+		color: var(--color-text-muted);
+		text-decoration: none;
+		padding: 0.1rem 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		transition: color 0.15s;
+	}
+
+	#toc :global(a:hover) {
+		color: var(--color-text);
+	}
+
+	#toc :global(a.toc-active) {
+		color: var(--color-text);
+	}
+
+	#toc :global(.toc-h3) {
+		padding-left: 0.75rem;
+	}
+
+	#toc :global(.toc-label) {
+		color: var(--color-text-muted);
+		font-size: 11px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		margin-bottom: 0.4rem;
+		display: block;
+	}
+</style>
+
+<script>
+	const toc = document.getElementById('toc');
+	const content = document.getElementById('post-content');
+
+	const alignToc = () => {
+		if (toc && content) {
+			toc.style.top = content.getBoundingClientRect().top + 'px';
+			toc.style.maxHeight = `calc(100vh - ${content.getBoundingClientRect().top}px - 1rem)`;
+		}
+	};
+
+	alignToc();
+	window.addEventListener('resize', alignToc);
+
+	if (toc && content) {
+		const headings = Array.from(content.querySelectorAll('h2, h3'));
+
+		if (headings.length > 1) {
+			const label = document.createElement('span');
+			label.className = 'toc-label';
+			label.textContent = 'contents';
+			toc.appendChild(label);
+
+			headings.forEach(heading => {
+				const a = document.createElement('a');
+				a.href = '#' + heading.id;
+				a.textContent = heading.textContent || '';
+				a.className = heading.tagName === 'H3' ? 'toc-h3' : '';
+				toc.appendChild(a);
+			});
+
+			const links = Array.from(toc.querySelectorAll('a'));
+
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(entry => {
+					const id = entry.target.id;
+					const link = links.find(l => l.getAttribute('href') === '#' + id);
+					if (entry.isIntersecting) {
+						links.forEach(l => l.classList.remove('toc-active'));
+						if (link) link.classList.add('toc-active');
+					}
+				});
+			}, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+			headings.forEach(h => observer.observe(h));
+		}
+	}
+</script>
